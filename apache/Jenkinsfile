@@ -10,8 +10,17 @@ pipeline {
                         def pom = readMavenPom file:'pom.xml'
                         print pom.version
                         env.version = pom.version
+                    }
+                }
+            }
+        }
 
-                        print env.version
+        stage ('Image') {
+            steps {
+                script {
+                    dir ('apache') {
+                        def app = docker.build "bondblaze/microservice-kubernetes-demo-apache:${env.version}"
+                        app.push()
                     }
                 }
             }
