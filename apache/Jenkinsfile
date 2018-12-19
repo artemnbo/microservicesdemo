@@ -3,11 +3,14 @@ node {
     withMaven(maven:'Maven 3.6.0') {
 
         stage('Build') {
-            sh 'mvn clean install'
+            dir (../) {
+                sh 'mvn clean package -Dmaven.test.skip=true'
 
-            def pom = readMavenPom file:'pom.xml'
-            print pom.version
-            env.version = pom.version
+                def pom = readMavenPom file:'pom.xml'
+                print pom.version
+                env.version = pom.version
+            }
+
         }
 
         stage('Image') {
