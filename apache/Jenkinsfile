@@ -3,7 +3,7 @@ node {
     withMaven(maven:'Maven 3.6.0') {
 
         stage('Build') {
-            dir (../) {
+            dir ('../') {
                 sh 'mvn clean package -Dmaven.test.skip=true'
 
                 def pom = readMavenPom file:'pom.xml'
