@@ -2,17 +2,17 @@ pipeline {
     agent any
 
     stages {
-        withMaven(maven:'Maven 3.6.0') {
-            stage('Build') {
-
-                sh 'mvn clean package -Dmaven.test.skip=true'
-
-                def pom = readMavenPom file:'pom.xml'
-                print pom.version
-                env.version = pom.version
-
-
-             }
+        stage('Build') {
+            steps {
+                script {
+                    withMaven(maven:'Maven 3.6.0') {
+                        sh 'mvn clean package -Dmaven.test.skip=true'
+                        def pom = readMavenPom file:'pom.xml'
+                        print pom.version
+                        env.version = pom.version
+                    }
+                }
+            }
         }
     }
 }
