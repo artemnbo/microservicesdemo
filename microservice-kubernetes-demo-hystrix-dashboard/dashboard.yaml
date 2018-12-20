@@ -18,7 +18,7 @@ spec:
         run: hystrix-dashboard
     spec:
       containers:
-        - image: docker.io/ewolff/microservice-kubernetes-demo-hystrix-dashboard:latest
+        - image: docker.io/bondblaze/microservice-kubernetes-demo-hystrix-dashboard:0.0.1-SNAPSHOT
           name: hystrix-dashboard
           ports:
             - containerPort: 8080
