@@ -25,5 +25,18 @@ pipeline {
                 }
             }
         }
+
+        stage ('Deploy to cluster') {
+            steps {
+                script {
+                    dir ('apache') {
+                        kubernetesDeploy( kubeconfigId: 'masterkub',
+                                          configs: 'apache.yaml',
+                                          enableConfigSubstitution: true
+                        )
+                    }
+                }
+            }
+        }
     }
 }
