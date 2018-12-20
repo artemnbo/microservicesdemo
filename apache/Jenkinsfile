@@ -30,7 +30,7 @@ pipeline {
             steps {
                 script {
                     dir ('apache') {
-                        kubernetesDeploy( kubeconfigId: 'masterkub',
+                        kubernetesDeploy( kubeconfigId: '232a9f07-71dc-4d00-a8ed-695c340720cf',
                                           configs: 'apache.yaml',
                                           enableConfigSubstitution: true
                         )
