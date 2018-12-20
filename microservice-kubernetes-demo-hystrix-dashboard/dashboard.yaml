@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    run: order
-  name: order
+    run: hystrix-dashboard
+  name: hystrix-dashboard
 spec:
   replicas: 1
   selector:
     matchLabels:
-      run: order
+      run: hystrix-dashboard
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        run: order
+        run: hystrix-dashboard
     spec:
       containers:
-        - image: docker.io/ewolff/microservice-kubernetes-demo-order:latest
-          name: order
+        - image: docker.io/ewolff/microservice-kubernetes-demo-hystrix-dashboard:latest
+          name: hystrix-dashboard
           ports:
             - containerPort: 8080
           resources: {}
