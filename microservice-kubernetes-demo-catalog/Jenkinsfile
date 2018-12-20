@@ -29,7 +29,7 @@ pipeline {
         stage ('Deploy to cluster') {
                     steps {
                         script {
-                            dir ('apache') {
+                            dir ('microservice-kubernetes-demo-catalog') {
                                 kubernetesDeploy( kubeconfigId: '232a9f07-71dc-4d00-a8ed-695c340720cf',
                                                   configs: 'catalog.yaml',
                                                   enableConfigSubstitution: true
